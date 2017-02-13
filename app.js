@@ -6,6 +6,7 @@ $(function() {
  	//I do realise this is flawed; if there is more than one space
  	console.log(text.split(" "));
  	var wordArray = text.split(" ");
+ 	console.log(wordArray);
  	var wordCount = text.split(" ").length;
  	var uniqueCount = makeUniqueArray(wordArray).length;
  	var wordAverage = calculateAverageWordLength(wordArray);
@@ -38,17 +39,10 @@ function makeUniqueArray(array) {
 }
 
 function calculateAverageWordLength(array) {
-	var sum = 0;
-
-	for (i=0; i < array.length; i++) {
-  	
-  		sum += array[i].split("").length;
-  		
-  		var average = sum / array.length;
-  		
-  		
-	}
-	return average;
+  var sum = array.reduce(function(prevVal, elem) {
+    return prevVal + elem.split("").length;
+   }, 0);
+  return sum / array.length;
 }
 
 
