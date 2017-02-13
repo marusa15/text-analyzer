@@ -27,14 +27,14 @@ $(function() {
  });
 });
 
+// makes an array of unique words from an array of all words
 function makeUniqueArray(array) {
-	var uniqueArray = [];
-	for (i=0; i < array.length; i++) {
-	    if (uniqueArray.indexOf(array[i]) === -1) {
-	      uniqueArray.push(array[i]);
-	    }
-    }
+	//return uniqueArray;
+    var uniqueArray = array.filter(function(elem, index, array) {
+        return array.indexOf(elem) === index;
+    });
     return uniqueArray;
+ 
 }
 
 function calculateAverageWordLength(array) {
@@ -51,19 +51,7 @@ function calculateAverageWordLength(array) {
 	return average;
 }
 
-// If I insert one word or nothing with a sentence in it, it doesn't work.
-/* I get this error: app.js:43 Uncaught TypeError: Cannot read property 'length' of null
-Why is there no test if user actually inserted the correct input?
 
-To do:
--refactor both for loops
--reduce excess code -> re-use
-
-bar bar foo keep keep keep
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Stop! Help? Moving on!!!
-
-*/
 
 
 
